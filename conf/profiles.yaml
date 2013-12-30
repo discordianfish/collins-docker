@@ -1,0 +1,15 @@
+---
+profiles:
+    docker:
+        label: "Docker host"
+        primary_role: "docker"
+        secondary_role: "default"
+        prefix: "docker"
+        requires_pool: false
+    testing:
+        label: "Test host"
+        primary_role: "test"
+        secondary_role: "default"
+        prefix: "test"
+        requires_pool: false
+

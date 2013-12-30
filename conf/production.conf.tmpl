@@ -1,0 +1,30 @@
+include "validations.conf"
+
+collins_conf_dir="conf/"
+                                                                                         
+application.secret="<APP_SECRET>"
+parsers.text.maxLength=1048576
+                                                                                         
+crypto.key="<CRYPTO_KEY>"
+evolutionplugin=disabled
+
+authentication {
+  permissionsFile = ${collins_conf_dir}"/permissions.yaml"
+}
+                                                                                         
+solr {
+  useEmbeddedServer = true
+  embeddedSolrHome = ${collins_conf_dir}"/solr/"
+}
+                                                                                         
+db.collins.logStatements=false
+db.collins.password="collins_db_password"
+db.collins.driver="com.mysql.jdbc.Driver"
+db.collins.url="jdbc:mysql://localhost/collins?autoReconnect=true&interactiveClient=true"
+db.collins.user="collins"
+
+provisioner.enabled=true
+provisioner.profiles=${collins_conf_dir}"/profiles.yaml"
+provisioner.rate="1/10 seconds"
+provisioner.command="./provision.sh '<tag>' '<profile-id>' '<notify>' '<suffix>' '<logfile>'"
+
